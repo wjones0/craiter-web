@@ -46,6 +46,10 @@ module.exports = function (passport) {
 						newUser.twitter.token = token;
 						newUser.twitter.username = profile.username;
 						newUser.twitter.displayName = profile.displayName;
+						newUser.username = profile.username;
+						newUser.cities = [];
+						newUser.search_strings = [];
+						newUser.posts = [];
 
 						newUser.save(function (err) {
 							if (err)
