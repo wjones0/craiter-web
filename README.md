@@ -1,3 +1,4 @@
-# node-auth-angular
+# craiter-web
 
-Worked to convert to angular from this:  https://github.com/brandonmcquarie/easy-node-authentication-angular
+Early version of a web front end for managing your creets.
+
