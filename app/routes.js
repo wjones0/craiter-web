@@ -29,7 +29,7 @@ module.exports = function (app, passport) {
 	});
 
 	app.post('/api/searchstring', isLoggedInAjax, function (req, res) {
-		User.findOne({ 'twitter.id': req.user.twitter.id }, function (err, user) {
+		User.findOne({ 'twitter.token': req.user.twitter.token }, function (err, user) {
 			if (err)
 				return done(err);
 
@@ -47,7 +47,7 @@ module.exports = function (app, passport) {
 	});
 
 	app.delete('/api/searchstring', isLoggedInAjax, function(req,res) {
-		User.findOne({ 'twitter.id': req.user.twitter.id }, function (err, user) {
+		User.findOne({ 'twitter.token': req.user.twitter.token }, function (err, user) {
 			if (err)
 				return done(err);
 			if (user) {
