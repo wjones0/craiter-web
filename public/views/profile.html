@@ -12,14 +12,27 @@
 
     <!-- TWITTER INFORMATION -->
     <div class="col-sm-12">
-        <!--<table class="table table-responsive table-striped">
-                <tr ng-repeat="ss in user.search_strings">
-                    <td>{{ss.name}}</td>
-                    <td>{{ss.search}}</td>
-                </tr>
-        </table>        -->
-        
-        <div ui-grid="{data: user.search_strings}"></div>
+        <table class="table table-responsive table-striped">
+            <tr>
+                <th>Search Name</th>
+                <th>Search URL</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="ss in user.search_strings">
+                <td class="searchName">{{ss.name}}</td>
+                <td class="searchString">{{ss.search}}</td>
+                <td><button class="btn btn-default btn-del" ng-click="delSearch(ss)"><span class="fa fa-minus searchMinus"></span></button></td>
+            </tr>
+            <tr>
+                <td><input class="newSearchNameInput" ng-model="newSearchName"/></td>
+                <td><input class="newSearchStringInput" ng-model="newSearchString"/></td>
+                <td><button class="btn btn-default btn-add" ng-click="addSearch()"><span class="fa fa-plus searchPlus"></span></button></td>
+            </tr>
+        </table>
+        <!--<div class="row" ng-repeat="ss in user.search_strings">
+            <div class="searchName col-sm-2">{{ss.name}}</div>
+            <div class="searchString col-sm-8">{{ss.search}}</div>
+        </div>        -->
     </div>
 
 

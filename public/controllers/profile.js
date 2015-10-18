@@ -16,5 +16,49 @@
                 .success(function(data) {
                     $scope.user = data; //Expose the user data to your angular scope
                 });
+                
+            $scope.newSearchName = "";
+            $scope.newSearchString = "";
+                
+            $scope.addSearch = function() {
+                if($scope.newSearchName == "" || $scope.newSearchString == "")
+                {
+                    alert("need to enter things");
+                    return;
+                }
+                $http.post('/api/searchString', {
+                    search: {
+                        name: $scope.newSearchName,
+                        search: $scope.newSearchString
+                    }
+                })
+                .success(function (data, status, headers, config) {
+                   alert('good');
+                })
+                .error(function (data, status, headers, config) {
+                    alert('bad');
+                });
+            };    
+ 
+            $scope.delSearch = function(searchToDel) {
+                $http({ url: '/api/searchString', 
+                    method: 'DELETE', 
+                    data: {                    
+                        search: {
+                            name: searchToDel.name,
+                            search: searchToDel.search
+                        }
+                    }, 
+                    headers: {"Content-Type": "application/json;charset=utf-8"}
+                })
+                .success(function (data, status, headers, config) {
+                   alert('good');
+                })
+                .error(function (data, status, headers, config) {
+                    alert('bad');
+                });
+            };    
+
+
         }]);
 })();
