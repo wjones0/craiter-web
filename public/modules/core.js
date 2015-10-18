@@ -1,3 +1,3 @@
 (function() {
-    angular.module('app', ['ngRoute', 'login', 'profile', 'httpFactory', 'common-directives', 'angular-growl']);
+    angular.module('app', ['ngRoute', 'login', 'profile', 'httpFactory', 'common-directives', 'angular-growl', 'ui.grid']);
 })();
