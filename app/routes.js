@@ -33,11 +33,14 @@ module.exports = function (app, passport) {
 			if (err)
 				return done(err);
 
+			if((req.body.search.search.indexOf("craigslist.org") == -1)||(req.body.search.search.indexOf("format=rss") == -1))
+				return res.json({error:"invalid url"});
+
 			if (user) {
 				user.search_strings.push(req.body.search);
 				user.save(function(err) {
 					if(err)
-						throw err;
+						done(err);
 					return res.json({});
 				})
 			} else {
@@ -63,7 +66,7 @@ module.exports = function (app, passport) {
 				}
 				user.save(function(err) {
 					if(err)
-						throw err;
+						done(err);
 					return res.json({});
 				})
 			} else {
